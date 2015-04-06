@@ -128,6 +128,12 @@ SESSION_TYPE_DEFAULTS = {
 
 SESSION_TYPES = [
     {
+        'name': 'music',
+        'display_name': "Music",
+        'num_demo_participants': 3,
+        'app_sequence': ['music', 'payment_info'],
+    },
+    {
         'name': 'public_goods',
         'display_name': "Public Goods",
         'num_demo_participants': 3,

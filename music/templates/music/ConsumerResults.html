@@ -1,0 +1,40 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags floppyforms %}
+{% load i18n %}
+
+{% block title %}
+    Results from Round for Consumer
+{% endblock %}
+
+{% block content %}
+
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/dev/topics/templates/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+
+
+
+
+    <table class="table-condensed" style="width:500px; margin-top:20px;">
+
+        <tr><td>Total Value:</td><td>{{ testVal }}</td></tr>
+        <tr><td>You Bought This Many Albums:</td><td>{{ numBought }}</td></tr>
+        <tr><td>You Pirated This Many Albums:</td><td>{{ numPirate }}</td></tr>
+        <tr><td>You Clicked on This Many Goods:</td><td>{{ numListen }}</td></tr>
+        <tr><td>Sub Service was Bought this many times:</td><td>{{ subPurchaseCount }}</td></tr>
+
+        <tr><td>Other participants contributed:</td><td></td></tr>
+        {% for p in player.get_others_in_group %}
+            <tr><td></td><td>{{ p.my_field }}</td></tr>
+        {% endfor %}
+
+        <tr><td>So in sum you will get:</td><td>{{ player.payoff }}</td></tr>
+    </table>
+
+    {% next_button %}
+{% endblock %}
