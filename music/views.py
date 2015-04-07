@@ -29,6 +29,7 @@ class MyPage(Page):
     form_fields = ['my_field']
 
     def is_displayed(self):
+
         return self.player.role() == ('producer') or self.player.role() == ('producer2')
 
     def vars_for_template(self):
@@ -36,7 +37,11 @@ class MyPage(Page):
             'my_variable_here': 1,
         }
 
+
+
     #timeout_seconds = 30
+
+
 
 
 class MyPageWait(WaitPage):

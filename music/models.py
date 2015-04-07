@@ -111,6 +111,19 @@ class Group(otree.models.BaseGroup):
     val8 = randint(7, 13)
     val9 = randint(7, 13)
 
+    def create_albums(self):
+        self.val = randint(7, 13)
+        self.val1 = randint(7, 13)
+        self.val2 = randint(7, 13)
+        self.val3 = randint(7, 13)
+        self.val4 = randint(7, 13)
+        self.val5 = randint(7, 13)
+        self.val6 = randint(7, 13)
+        self.val7 = randint(7, 13)
+        self.val8 = randint(7, 13)
+        self.val9 = randint(7, 13)
+
+
 
 
 
@@ -374,6 +387,8 @@ class Player(otree.models.BasePlayer):
             return 'producer2'
         if self.id_in_group == 3:
             return 'consumer'
+
+
 
 
 
