@@ -22,17 +22,17 @@ http://getbootstrap.com/components/
 
     <table class="table-condensed" style="width:500px; margin-top:20px;">
 
-        <tr><td>Number of Albums Produced:</td><td>{{ player.my_field }}</td></tr>
+        <tr><td>Number of Goods you Produced:</td><td>{{ player.my_field }}</td></tr>
 
-        <tr><td>Number of Albums Bought:</td><td>{{ numBought }}</td></tr>
-        <tr><td>Number of Albums Pirated:</td><td>{{ numPirate }}</td></tr>
-        <tr><td>Number of Albums Listened:</td><td>{{ numListen }}</td></tr>
-        <tr><td>Other participants contributed:</td><td></td></tr>
+        <tr><td>Number of Goods Bought by Consumers:</td><td>{{ numBought }}</td></tr>
+        <tr><td>Number of Goods Taken by Consumers:</td><td>{{ numPirate }}</td></tr>
+        <tr><td>Number of times your Goods were Clicked on:</td><td>{{ numListen }}</td></tr>
+        <tr><td>Other producer contributed this many goods:</td><td></td></tr>
         {% for p in player.get_others_in_group %}
             <tr><td></td><td>{{ p.my_field }}</td></tr>
         {% endfor %}
 
-        <tr><td>So in sum you will get:</td><td>{{ player.payoff }}</td></tr>
+        <tr><td>Your total payoff for this period is:</td><td>{{ player.payoff }}</td></tr>
     </table>
 
     {% next_button %}

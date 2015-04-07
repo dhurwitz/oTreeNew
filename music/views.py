@@ -36,7 +36,7 @@ class MyPage(Page):
             'my_variable_here': 1,
         }
 
-    timeout_seconds = 30
+    #timeout_seconds = 30
 
 
 class MyPageWait(WaitPage):
@@ -81,7 +81,7 @@ class ConsumerPhase(Page):
 
         }
 
-    timeout_seconds = 120
+    #timeout_seconds = 120
 
 
 class ConsumerPhaseWait(WaitPage):
@@ -112,7 +112,7 @@ class ConsumerResults(Page):
 
         }
 
-    timeout_seconds = 30
+    #timeout_seconds = 30
 
     pass
 
@@ -130,7 +130,7 @@ class ProducerResults(Page):
 
         }
 
-    timeout_seconds = 30
+    #timeout_seconds = 30
 
     pass
 
@@ -148,7 +148,7 @@ class ProducerResults2(Page):
 
         }
 
-    timeout_seconds = 30
+    #timeout_seconds = 30
 
     pass
 

@@ -100,16 +100,16 @@ class Group(otree.models.BaseGroup):
     A9 = Album(9)
     A10 = Album(10)
 
-    val = A1.value
-    val1 = A2.value
-    val2 = A3.value
-    val3 = A4.value
-    val4 = A5.value
-    val5 = A6.value
-    val6 = A7.value
-    val7 = A8.value
-    val8 = A9.value
-    val9 = A10.value
+    val = randint(7, 13)
+    val1 = randint(7, 13)
+    val2 = randint(7, 13)
+    val3 = randint(7, 13)
+    val4 = randint(7, 13)
+    val5 = randint(7, 13)
+    val6 = randint(7, 13)
+    val7 = randint(7, 13)
+    val8 = randint(7, 13)
+    val9 = randint(7, 13)
 
 
 
@@ -127,10 +127,6 @@ class Group(otree.models.BaseGroup):
 
         return producer2.my_field
 
-    def get_value(self):
-        consumer = self.get_player_by_role('consumer')
-
-        return consumer.totalValue
 
     def calc_prod_albumsBought(self):
         calcBought = 0
@@ -207,6 +203,7 @@ class Group(otree.models.BaseGroup):
 
     def calc_prod_payoff(self):
         calcPayoff = 0
+        calcSub = 0
         producer = self.get_player_by_role('producer')
         for p in producer.get_others_in_group():
             if p.id_in_group != 2:
@@ -215,10 +212,16 @@ class Group(otree.models.BaseGroup):
                 calcPayoff += p.album3BuyCount
                 calcPayoff += p.album4BuyCount
                 calcPayoff += p.album5BuyCount
-                calcPayoff *= Constants.album_own_cost
+                calcSub += p.subPurchaseCount
+
+        calcSub *= (50 * (self.get_albums()/(self.get_albums()+self.get_albums2())))
+        calcPayoff *= Constants.album_own_cost
+        calcPayoff += (100 - (self.get_albums() * 20))
+        calcPayoff += calcSub
         return calcPayoff
 
     def calc_prod2_payoff(self):
+        calcSub2 = 0
         calc2Payoff = 0
         producer2 = self.get_player_by_role('producer2')
         for p in producer2.get_others_in_group():
@@ -228,7 +231,12 @@ class Group(otree.models.BaseGroup):
                 calc2Payoff += p.album8BuyCount
                 calc2Payoff += p.album9BuyCount
                 calc2Payoff += p.album10BuyCount
-                calc2Payoff *= Constants.album_own_cost
+                calcSub2 += p.subPurchaseCount
+
+        calcSub2 *= (50 * (self.get_albums2()/(self.get_albums()+self.get_albums2())))
+        calc2Payoff *= Constants.album_own_cost
+        calc2Payoff += (100 - (self.get_albums2() * 20))
+        calc2Payoff += calcSub2
         return calc2Payoff
 
 
@@ -342,6 +350,14 @@ class Player(otree.models.BasePlayer):
         numL += self.album9ListenCount
         numL += self.album10ListenCount
         return numL
+
+    def get_value(self):
+
+        valueCalc = self.totalValue
+        valueCalc += (100 - (20 * self.get_num_bought()) - (50 * self.subPurchaseCount))
+
+        return valueCalc
+
 
 
 
