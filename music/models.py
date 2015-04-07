@@ -248,7 +248,7 @@ class Group(otree.models.BaseGroup):
         producer2 = self.get_player_by_role('producer2')
 
 
-        consumer.payoff = self.get_value()
+        consumer.payoff = consumer.get_value()
         producer.payoff = self.calc_prod_payoff()
         producer2.payoff = self.calc_prod2_payoff()
 

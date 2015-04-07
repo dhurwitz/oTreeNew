@@ -104,7 +104,7 @@ class ConsumerResults(Page):
 
     def vars_for_template(self):
         return {
-            'testVal': self.group.get_value(),
+            'testVal': self.player.get_value(),
             'numBought': self.player.get_num_bought(),
             'numPirate': self.player.get_num_pirate(),
             'numListen': self.player.get_num_listen(),
