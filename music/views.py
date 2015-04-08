@@ -30,7 +30,7 @@ class MyPage(Page):
 
     def is_displayed(self):
 
-        return self.player.role() == ('producer') or self.player.role() == ('producer2')
+        return self.player.participant.vars['color']
 
     def vars_for_template(self):
         return {
